@@ -1,8 +1,24 @@
-import React from 'react'
+import { useState, useContext, } from 'react'
+import { CartContext } from '../../context/CartProvider'
+import Navbar from '../../components/Navbar/Navbar'
 
 const Cart = () => {
+
+  const { cart, removeItem, cleanCart } = useContext(CartContext)
+
   return (
-    <div>Cart</div>
+    <div>
+      <Navbar />
+      <h2>Carrito</h2>
+      {cart.map((item) => (
+        <div className="cart-content" key={item.id}>
+          <h2> {item.title}</h2>
+          <p>{item.cantidad}</p>
+          <button onClick={() => removeItem(item.id)}>Remover Item</button>
+        </div>
+      ))}
+      <button onClick={cleanCart}>Limpiar Carrito</button>
+    </div>
   )
 }
 

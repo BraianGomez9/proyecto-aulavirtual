@@ -1,5 +1,5 @@
 import { Children, createContext, useContext } from 'react'
-import { CartProvider } from './CartContext'
+import CartProvider from './CartProvider';
 
 export const GeneralContext = createContext(useContext);
 
