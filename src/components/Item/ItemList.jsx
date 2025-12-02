@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useState, useEffect, useContext } from 'react'
+import { useParams } from 'react-router-dom'
 import { fetchProductById } from '../../assets/services/productService'
+import { CartContext } from '../../context/CartProvider'
 import '../../main.css'
 
-const ItemList = () => {
+const ItemList = ({ product }) => {
 
     const [item, setItem] = useState(null);
+
+    const { addCart } = useContext(CartContext);
 
     const id = useParams().id
 
@@ -23,13 +26,13 @@ const ItemList = () => {
 
     return (
         <div className="item-view-element"
-                 key={item.id}>
-                <h2>{item.title}</h2>
-                <img src={item.image} alt="" />
-                <p>{item.description}</p>
-                <p>${item.price}</p>
-                <button>Agregar al carrito</button>
-            </div>
+            key={item.id}>
+            <h2>{item.title}</h2>
+            <img src={item.image} alt="" />
+            <p>{item.description}</p>
+            <p>${item.price}</p>
+            <button onClick={() => addCart(item)}>Agregar al carrito</button>
+        </div>
     )
 }
 

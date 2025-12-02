@@ -6,7 +6,7 @@ import "../../main.css"
 
 const Item = ({ product }) => {
 
-    const { addCart } = useContext(CartContext)
+    const { addCart } = useContext(CartContext);
 
     return (
         <div className='product-card'>

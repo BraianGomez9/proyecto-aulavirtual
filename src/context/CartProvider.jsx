@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const exist = prevCart.find((p) => p.id === product.id);
       if (exist) {
-        return prevCart.map((p) => 
+        return prevCart.map((p) =>
           p.id === product.id
             ? { ...p, cantidad: p.cantidad + 1 }
             : p
@@ -35,9 +35,11 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   }
 
+  const total = cart.reduce((acc, item) => acc + Number(item.cantidad) * item.cantidad, 0);
+  
 
   return (
-    <CartContext.Provider value={{ cart, addCart, removeItem, cleanCart }}>
+    <CartContext.Provider value={{ cart, addCart, removeItem, cleanCart, total }}>
       {children}
     </CartContext.Provider>
   )
