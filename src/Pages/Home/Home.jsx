@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchProducts } from "../../assets/services/productService"
+import { fetchProducts } from "../../services/productService"
 import Navbar from "../../components/Navbar/Navbar"
 import ItemListContainer from "../../components/Item/ItemListContainer"
 import "../../main.css"

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchProductById } from '../../assets/services/productService'
+import { fetchProductById } from '../../services/productService'
 import { CartContext } from '../../context/CartProvider'
 import '../../main.css'
 
@@ -31,7 +31,7 @@ const ItemList = ({ product }) => {
             <img src={item.image} alt="" />
             <p>{item.description}</p>
             <p>${item.price}</p>
-            <button onClick={() => addCart(item)}>Agregar al carrito</button>
+            <button className='add-cart-button' onClick={() => addCart(item)}>Agregar al carrito</button>
         </div>
     )
 }

@@ -18,6 +18,21 @@ export const fetchProductById = async (id) => {
         return await response.json();
     } catch (error) {
         console.error(error)
-        throw(error)
+        throw (error)
     }
 }
+
+export const saveProduct = (product) => {
+    const stored = JSON.parse(localStorage.getItem("products")) || [];
+
+    const newProduct = {
+        ...product,
+        id: Date.now(), // ID único
+    };
+
+    stored.push(newProduct);
+
+    localStorage.setItem("products", JSON.stringify(stored));
+
+    return newProduct;
+};

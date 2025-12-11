@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { fetchProductById } from "../../assets/services/productService"
+import { fetchProductById } from "../../services/productService"
 import ItemList from "../../components/Item/ItemList"
 import Navbar from "../../components/Navbar/Navbar"
 

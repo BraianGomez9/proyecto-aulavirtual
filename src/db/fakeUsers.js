@@ -1,0 +1,4 @@
+export const fakeUsers = [
+  { username: "admin", password: "admin" },
+  { username: "user", password: "1234" }
+];

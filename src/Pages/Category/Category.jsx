@@ -1,8 +1,9 @@
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
-import { fetchProducts } from "../../assets/services/productService"
+import { fetchProducts } from "../../services/productService"
 import Navbar from "../../components/Navbar/Navbar"
 import Item from "../../components/Item/Item"
+import "../../main.css"
 
 const Category = () => {
 
@@ -18,15 +19,16 @@ const Category = () => {
     const filtered = products.filter(p => p.category === categoryId)
 
     return (
-        <div>
+        <div className="main-category-container">
             <Navbar />
             <h2>Categoría: {categoryId}</h2>
+            <div className="main-category">
+                {filtered.length === 0 && <p>No hay productos en esta categoría.</p>}
 
-            {filtered.length === 0 && <p>No hay productos en esta categoría.</p>}
-
-            {filtered.map(prod => (
-                <Item key={prod.id} product={prod} />
-            ))}
+                {filtered.map(prod => (
+                    <Item key={prod.id} product={prod} />
+                ))}
+            </div>
         </div>
     )
 }

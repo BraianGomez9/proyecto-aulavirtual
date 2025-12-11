@@ -13,9 +13,9 @@ const Item = ({ product }) => {
             <h3>{product.title}</h3>
             <img src={product.image} alt="" />
             <span>{product.description}</span>
-            <p>{product.price}</p>
-            <Link to={`/item-view/${product.id}`}>Ver mas</Link>
-            <button onClick={() => addCart(product)}>Agregar al carrito</button>
+            <b>${product.price}</b>
+            <Link to={`/item-view/${product.id}`}><p className='view-more'>Ver mas</p></Link>
+            <button className='add-cart-button' onClick={() => addCart(product)}>Agregar al carrito</button>
         </div>
     )
 }
