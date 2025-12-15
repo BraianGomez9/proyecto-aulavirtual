@@ -6,7 +6,7 @@ import ItemView from './Pages/ItemView/ItemView'
 import Cart from './Pages/Cart/Cart'
 import Category from './Pages/Category/Category'
 import ProductFormData from './Pages/ProductFormContainer/ProductFormContainer'
-import { GeneralProvider } from './context/GeneralProvider'
+
 import AuthUser from './components/AuthUser/AuthUser'
 
 import './App.css'
@@ -15,7 +15,6 @@ function App() {
 
   return (
     <>
-      <GeneralProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -24,7 +23,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/category/:categoryId' element={<Category />} />
             <Route
-              path="/create-product"
+              path="/admin/altaproductos"
               element={
                 <AuthUser>
                   <ProductFormData />
@@ -33,7 +32,6 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-      </GeneralProvider>
     </>
   )
 }

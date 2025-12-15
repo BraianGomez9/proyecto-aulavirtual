@@ -1,14 +1,15 @@
-import { Children, createContext, useContext } from 'react'
 import CartProvider from './CartProvider';
-import { UserProvider } from './UserProvider';
-export const GeneralContext = createContext(useContext);
+import UserProvider from './UserProvider';
 
-export const GeneralProvider = ({ children }) => {
-    return (
-        <UserProvider>
-            <CartProvider>
-                {children}
-            </CartProvider>
-        </UserProvider>
-    )
-}
+const GeneralProvider = ({ children }) => {
+  return (
+    <UserProvider>
+      <CartProvider>
+        {children}
+      </CartProvider>
+    </UserProvider>
+  );
+};
+
+export default GeneralProvider;
+

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { uploadToImgbb } from "../../components/uploadImage";
 import Navbar from "../../components/Navbar/Navbar";
+import { useNavigate } from "react-router";
 import "../../main.css"
 
 const ProductFormContainer = () => {
@@ -14,6 +15,8 @@ const ProductFormContainer = () => {
   });
 
   const [previewUrl, setPreviewUrl] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,6 +59,7 @@ const ProductFormContainer = () => {
       if (!res.ok) throw new Error("Error al guardar en MockAPI");
 
       alert("Producto creado correctamente 🎉");
+      navigate("/")
     } catch (error) {
       console.error(error);
       alert("Error al crear producto");
