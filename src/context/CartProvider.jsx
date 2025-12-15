@@ -9,11 +9,13 @@ export const CartProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : []
   })
 
+  const [message, setMessage] = useState("")
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart]);
 
-  const addCart = (product) => {
+  const handleAddToCart = (product) => {
     setCart((prevCart) => {
       const exist = prevCart.find((p) => p.id === product.id);
       if (exist) {
@@ -27,6 +29,7 @@ export const CartProvider = ({ children }) => {
     })
   }
 
+
   const removeItem = (id) => {
     setCart(cart.filter((item) => item.id !== id))
   }
@@ -35,11 +38,12 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   }
 
-  const total = cart.reduce((acc, item) => acc + Number(item.cantidad) * item.cantidad, 0);
-  
+  const total = cart.reduce((acc, item) => acc + item.price * item.cantidad, 0);
+
+
 
   return (
-    <CartContext.Provider value={{ cart, addCart, removeItem, cleanCart, total }}>
+    <CartContext.Provider value={{ cart, handleAddToCart, removeItem, cleanCart, total, message }}>
       {children}
     </CartContext.Provider>
   )

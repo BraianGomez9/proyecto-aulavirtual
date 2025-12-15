@@ -8,9 +8,20 @@ const ItemList = ({ product }) => {
 
     const [item, setItem] = useState(null);
 
-    const { addCart } = useContext(CartContext);
+    const { handleAddToCart } = useContext(CartContext);
+
+    const [message, setMessage] = useState('')
 
     const id = useParams().id
+
+    const addCartMessage = () => {
+        handleAddToCart(item)
+        setMessage("Agregado al carrito!")
+
+        setTimeout(() => {
+            setMessage("")
+        }, 3000);
+    }
 
     useEffect(() => {
         fetchProductById(Number(id))
@@ -31,7 +42,8 @@ const ItemList = ({ product }) => {
             <img src={item.image} alt="" />
             <p>{item.description}</p>
             <p>${item.price}</p>
-            <button className='add-cart-button' onClick={() => addCart(item)}>Agregar al carrito</button>
+            <button className='add-cart-button' onClick={addCartMessage}>Agregar al carrito</button>
+            {message && <p className="cart-message">{message}</p>}
         </div>
     )
 }
