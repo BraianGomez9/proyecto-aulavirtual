@@ -6,7 +6,7 @@ import ItemView from './Pages/ItemView/ItemView'
 import Cart from './Pages/Cart/Cart'
 import Category from './Pages/Category/Category'
 import ProductFormData from './Pages/ProductFormContainer/ProductFormContainer'
-
+import NotFound from './Pages/NotFound/NotFound'
 import AuthUser from './components/AuthUser/AuthUser'
 
 import './App.css'
@@ -15,23 +15,25 @@ function App() {
 
   return (
     <>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/item-view/:id' element={<ItemView />}></Route>
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/category/:categoryId' element={<Category />} />
-            <Route
-              path="/admin/altaproductos"
-              element={
-                <AuthUser>
-                  <ProductFormData />
-                </AuthUser>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/item-view/:id' element={<ItemView />}></Route>
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/category/:categoryId' element={<Category />} />
+          <Route
+            path="/admin/altaproductos"
+            element={
+              <AuthUser>
+                <ProductFormData />
+              </AuthUser>
+            }
+          />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
